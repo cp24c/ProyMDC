@@ -1,4 +1,4 @@
-FROM node:22-alphine
+FROM node:lts-alpine3.20
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ WORKDIR /app
 
 #RUN npm install
 
-RUN npm install -g @angular/cli
+#RUN npm install -g @angular/cli
 
 
 COPY cliente/ . 
