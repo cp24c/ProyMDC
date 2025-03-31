@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:16.6
+    restart: always
+    container_name: postgres-db
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_DB: icfes
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: adminpass
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    restart: always
+
+  api: 
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: node-api
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin
+      DB_PASSWORD: adminpass
+      DB_NAME: icfes
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - db
+    restar: always
+
+  cliente: 
+    build:
+      context: .
+      dockerfile: cliente/Dockerfile
+    container_name: angular-cliente
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./cliente:/app
+    
+
+    
+
+  
+    
+
+
+      
+      
