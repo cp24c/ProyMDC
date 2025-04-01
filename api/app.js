@@ -1,8 +1,11 @@
 import express, { json } from 'express';
+import setupSwagger from './swagger.js'; 
 const app = express();
 const port = 3000;
 import pg from 'pg';
 const { Client } = pg;
+
+setupSwagger(app);
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -26,11 +29,51 @@ client.connect()
 .then(() => console.log('Conectado a la base de datos PostgreSQL'))
 .catch((err) => console.error('Error de conexión a la base de datos:', err));
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Prueba:
+ *          type: object
+ *          required:
+ *              - id
+ *          properties:
+ *              id:
+ *                  type: string
+ *                  description: ID autogenerado
+ *              nombre:
+ *                  type: string
+ *          example:
+ *              id: 1
+ *              nombre: Test 1
+ *              
+ */
+
+
 app.get('/',(req,res) => {
     res.send(`Conectando a la base de datos ${dbName} en ${dbHost}:${dbPort}`);
 });
 
 app.use(json());
+
+/**
+ * @swagger
+ * /api/prueba:
+ *  get:
+ *      summary: Obtiene todas las pruebas
+ *      tags: [Prueba]
+ *      responses:
+ *          200:
+ *              description: Lista de pruebas
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Prueba'
+ *           
+ * 
+ */
 
 app.get('/api/prueba', async (req, res) => {
     try {
@@ -52,4 +95,5 @@ app.post('/api', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
   
