@@ -30,5 +30,37 @@ de ICFES y acceder atras de un usuario
 
 nota: Todas las credenciales de los servicios puede modificarlas en el archivo docker-compose.yml
     
+# ENPOINTS
+# Estudiante
 
+### post-estutiante
+![alt text](images-docs/post-estudiante.png)
 
+### get-estudiantes
+
+![alt text](images-docs/get-estudinates.png)
+
+### get-estudiantes-id
+
+![alt text](images-docs/get-estudiante-id.png)
+
+### delete-estudiante-id
+
+![alt text](images-docs/delete-estudiante-id.png)
+
+# Usuarios
+
+### post-usuarios
+![alt text](images-docs/post-usuario.png)
+
+### get-usuarios
+
+![alt text](images-docs/get-usuarios.png)
+
+### get-usuario-id
+
+![alt text](images-docs/get-usuario-id.png)
+
+### delete-usuario-id
+
+![alt text](images-docs/delete-usuario-id.png)
