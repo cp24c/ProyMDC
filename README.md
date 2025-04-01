@@ -17,16 +17,16 @@ de ICFES y acceder atras de un usuario
 - Ejecutar el comando:
     docker-compose up -d
 - Puede revisar los enpoints en: http://localhost:3000/api-docs
-- Para revisar la base de datos ICFES puede usar PgAdmin en: http://localhost:80
-    Credenciales:
-        usuario: admin@admin.com
-        contraseña: adminpass
-    crear un servidor donde:
-        nombre del servidor: cualquiera
-        host: db
-        port: 5432
-        usuario: admin
-        contraseña adminpass
+- Para revisar la base de datos ICFES puede usar PgAdmin en: http://localhost:80.<br>
+ - Credenciales:
+  - usuario: admin@admin.com
+  - contraseña: adminpass
+ - crear un servidor donde:
+  - nombre del servidor: cualquiera
+  - host: db
+  - port: 5432
+  - usuario: admin
+  - contraseña adminpass
 
 nota: Todas las credenciales de los servicios puede modificarlas en el archivo docker-compose.yml
     
