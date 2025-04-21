@@ -1,20 +1,21 @@
 import { DataTypes } from "sequelize";
 import { db } from "../config/db.js";
 
-export const Departamento = db.define(
-  "Departamento",
+export const department = db.define(
+  "department_model",
   {
-    cod_depto: {
+    department_code: {
       type: DataTypes.STRING(3),
       primaryKey: true,
+      allowNull: false
     },
-    depto: {
+    department_name: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
   },
   {
-    tableName: "departamentos",
+    tableName: "departament",
     timestamps: false,
   }
 );

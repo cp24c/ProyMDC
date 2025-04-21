@@ -4,7 +4,7 @@ import {
     getEstudiantes,
     getEstudianteByConsecutivo,
     deleteEstudiante,
-} from "../controllers/estudiantes.controller.js";
+} from "../../controllers/v1/estudiantes.controller.js";
 
 export const estudiantesRoutes = Router();
 

@@ -1,9 +1,9 @@
 import { DataTypes } from "sequelize";
 import { db } from "../config/db.js";
-import { Municipio } from "./municipios.model.js";
+import { municipality } from "./municipality.model.js";
 
-export const Colegio = db.define(
-  "Colegio",
+export const school = db.define(
+  "School",
   {
     cod_dane_sede: {
       type: DataTypes.STRING(14),
@@ -43,10 +43,10 @@ export const Colegio = db.define(
     },
   },
   {
-    tableName: "colegios",
+    tableName: "school",
     timestamps: false,
   }
 );
 
-Colegio.belongsTo(Municipio, { foreignKey: "mcpio_ubicacion" });
-Municipio.hasMany(Colegio, { foreignKey: "mcpio_ubicacion" });
+school.belongsTo(municipality, { foreignKey: "mcpio_ubicacion" });
+municipality.hasMany(school, { foreignKey: "mcpio_ubicacion" });

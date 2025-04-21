@@ -1,5 +1,5 @@
-import { Estudiante } from "../models/estudiantes.model.js";
-import { Municipio } from "../models/municipios.model.js";
+import { Estudiante } from "../../models/estudiantes.model.js";
+import { Municipio } from "../../models/municipios.model.js";
 
 export const createEstudiante = async (req, res) => {
     try {
