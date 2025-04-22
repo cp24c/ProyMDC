@@ -18,7 +18,6 @@ app.use(session({
     saveUninitialized: true,
     store: memoryStore
 }));
-
 app.use(keycloak.middleware());
 
 setupSwagger(app);

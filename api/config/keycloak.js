@@ -6,8 +6,8 @@ const memoryStore = new session.MemoryStore();
 const keycloak = new Keycloak({ store: memoryStore }, {
   clientId: "node-backend",
   bearerOnly: true,
-  serverUrl: "http://localhost:8080/auth",
-  realm: "myrealm",
+  serverUrl: "http://localhost:8080",
+  realm: "realm_icfes",
   credentials: {
     secret: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   },
