@@ -32,8 +32,8 @@ services:
       - app-network
     restart: always
 
-  api: 
-    build: 
+  api:
+    build:
       context: ./api
       dockerfile: Dockerfile
     container_name: node-api
@@ -45,7 +45,7 @@ services:
       DB_NAME: icfes
     env_file:
       - ./api/.env.production
-    ports: 
+    ports:
       - "3000:3000"
     depends_on:
       - db
@@ -53,19 +53,21 @@ services:
       - app-network
     restart: always
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.2.0
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    restart: always
 volumes:
   postgres_data:
 
 networks:
   app-network:
     driver: bridge
-
-
-    
-
-  
-    
-
-
-      
-      
