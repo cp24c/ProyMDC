@@ -14,10 +14,10 @@ export const db = new Sequelize( {
     password: process.env.DATABASE_PASSWORD,
     dialect: 'postgres',
     logging: false,
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false
-        }
-    }
+    // dialectOptions: {
+    //     ssl: {
+    //         require: true, // This will be set to true in production
+    //         rejectUnauthorized: false
+    //     }
+    // }
 });
