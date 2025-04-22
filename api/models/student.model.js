@@ -1,55 +1,25 @@
 import { DataTypes } from "sequelize";
 import { db } from "../config/db.js";
-import { Municipio } from "./municipios.model.js";
-import { Colegio } from "./colegios.model.js";
 
-export const Estudiante = db.define(
-  "Estudiante",
+export const student = db.define("student",
   {
-    consecutivo: {
-      type: DataTypes.STRING(20),
-      primaryKey: true,
-    },
-    estudiante: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-    },
-    tipodocumento: {
-      type: DataTypes.STRING(4),
-      allowNull: false,
-    },
-    cod_reside_mcpio: {
-      type: DataTypes.STRING(6),
-      allowNull: false,
-    },
-    cod_mcpio_presentacion: {
-      type: DataTypes.STRING(6),
-      allowNull: false,
-    },
-    fechanacimiento: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    genero: {
-      type: DataTypes.CHAR(1),
-      allowNull: false,
-    },
-    nse_individual: {
-      type: DataTypes.STRING(5),
-      allowNull: false,
-    },
-    cod_dane_sede: {
-      type: DataTypes.STRING(14),
-      allowNull: false,
-    },
+    student_consecutive: { type: DataTypes.STRING, allowNull: false, primaryKey: true },
+    student_document_type: DataTypes.STRING,
+    student_gender: DataTypes.STRING,
+    student_birth_date: DataTypes.DATEONLY,
+    residence_department_code: DataTypes.STRING,
+    residence_department_name: DataTypes.STRING,
+    residence_municipality_code: DataTypes.STRING,
+    residence_municipality_name: DataTypes.STRING,
+    socioeconomic_level: DataTypes.STRING,
+    student_disability: DataTypes.STRING,
+    student_detained: DataTypes.STRING,
+    school_icfes_code: DataTypes.STRING,
+    exam_site_code: DataTypes.STRING,
+    period_code: DataTypes.STRING
   },
   {
-    tableName: "estudiantes",
+    tableName: "student",
     timestamps: false,
   }
 );
-
-// Estudiante.belongsTo(Municipio, { foreignKey: "cod_reside_mcpio", as: "residencia" });
-// Estudiante.belongsTo(Municipio, { foreignKey: "cod_mcpio_presentacion", as: "presentacion" });
-// Estudiante.belongsTo(Colegio, { foreignKey: "cod_dane_sede" });
-// Colegio.hasMany(Estudiante, { foreignKey: "cod_dane_sede" });

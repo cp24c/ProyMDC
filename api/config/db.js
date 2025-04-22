@@ -1,14 +1,17 @@
-import { Sequelize } from "sequelize";
+import { Sequelize} from "sequelize";
 import dotenv from 'dotenv';
+import path from 'path';
 
-dotenv.config();
+const env = process.env.NODE_ENV || 'development';
 
-export const db = new Sequelize(process.env.DB, {
-    /*host: process.env.DATABASE_HOST,
+dotenv.config({path: path.resolve(process.cwd(), `.env.${env}`)});
+
+export const db = new Sequelize( {
+    host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     database: process.env.DATABASE_NAME,
     username: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,*/
+    password: process.env.DATABASE_PASSWORD,
     dialect: 'postgres',
     logging: false,
     dialectOptions: {
@@ -18,18 +21,3 @@ export const db = new Sequelize(process.env.DB, {
         }
     }
 });
-
-export const connectDB = async () => {
-    try {
-        await db.authenticate();
-        console.log("Connected to the database");
-
-        await db.sync({
-            alter: true,
-            // force: true
-        });
-    } catch (error) {
-        console.log("database connection error");
-        console.log(error);
-    }
-};

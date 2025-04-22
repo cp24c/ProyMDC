@@ -44,7 +44,7 @@ services:
       DB_PASSWORD: adminpass
       DB_NAME: icfes
     env_file:
-      - ./api/.env
+      - ./api/.env.production
     ports: 
       - "3000:3000"
     depends_on:
@@ -52,18 +52,6 @@ services:
     networks:
       - app-network
     restart: always
-
-  #cliente: 
-  #  build:
-  #    context: .
-  #    dockerfile: cliente/Dockerfile
-  #  container_name: angular-cliente
-  #  ports:
-  #    - "4200:4200"
-  #  volumes:
-  #    - ./cliente:/app
-  #  restart: always
-  #  
 
 volumes:
   postgres_data:

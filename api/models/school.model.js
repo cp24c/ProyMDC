@@ -1,52 +1,22 @@
 import { DataTypes } from "sequelize";
 import { db } from "../config/db.js";
-import { municipality } from "./municipality.model.js";
 
-export const school = db.define(
-  "School",
+export const school = db.define("school",
   {
-    cod_dane_sede: {
-      type: DataTypes.STRING(14),
-      primaryKey: true,
-    },
-    area_ubicacion: {
-      type: DataTypes.STRING(6),
-      allowNull: false,
-    },
-    bilingue: {
-      type: DataTypes.CHAR(1),
-      allowNull: false,
-    },
-    calendario: {
-      type: DataTypes.CHAR(1),
-      allowNull: false,
-    },
-    caracter: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-    },
-    mcpio_ubicacion: {
-      type: DataTypes.STRING(6),
-      allowNull: false,
-    },
-    nombre_establecimiento: {
-      type: DataTypes.STRING(80),
-      allowNull: false,
-    },
-    nombre_sede: {
-      type: DataTypes.STRING(80),
-      allowNull: false,
-    },
-    jornada: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
-    },
+    school_icfes_code: { type: DataTypes.STRING, primaryKey: true },
+    school_dane_code: DataTypes.STRING,
+    school_name: DataTypes.STRING,
+    school_department_code: DataTypes.STRING,
+    school_department_name: DataTypes.STRING,
+    school_municipality_code: DataTypes.STRING,
+    school_municipality_name: DataTypes.STRING,
+    school_nature: DataTypes.STRING,
+    school_character: DataTypes.STRING,
+    school_calendar: DataTypes.STRING,
+    school_shift: DataTypes.STRING,
+    school_gender: DataTypes.STRING,
+    school_area: DataTypes.STRING,
+    school_bilingual: DataTypes.STRING
   },
-  {
-    tableName: "school",
-    timestamps: false,
-  }
+  { tableName: "school", timestamps: false }
 );
-
-school.belongsTo(municipality, { foreignKey: "mcpio_ubicacion" });
-municipality.hasMany(school, { foreignKey: "mcpio_ubicacion" });

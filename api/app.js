@@ -1,10 +1,9 @@
 import setupSwagger from './swagger.js';
 import express from 'express';
 import cors from 'cors';
-import { connectDB } from './config/db.js';
-import { usuarioRoutes } from './routes/v1/usuario.routes.js';
-import { estudiantesRoutes } from './routes/v1/estudiantes.routes.js';
-import { departamentosRoutes as v1RoutesDepartamentos} from './routes/v1/departamentos.routes.js';
+import { connectDB } from './utils/connectDB.js';
+import icfesUploadRoutesV2 from './routes/v2/icfes.routes.js';
+import { userRoutes as userRoutesV2 } from './routes/v2/user.routes.js';
 
 const app = express();
 app.use(cors());
@@ -12,15 +11,21 @@ app.use(express.json());
 setupSwagger(app);
 
 //Routes
-app.use('/estudiantes', estudiantesRoutes);
-app.use('/usuarios', usuarioRoutes);
-app.use('/api/v1/departamentos', v1RoutesDepartamentos)
+app.use('/api/v2/icfes', icfesUploadRoutesV2);
+app.use('/api/v2/user', userRoutesV2);
 
 const port = 3000;
-app.listen(port, () => {
-    console.log(`\x1b[32m■ Servidor corriendo en el puerto ${port} => http://localhost:${port}\x1b[0m`);
-});
 
-connectDB();
+connectDB()
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`\x1b[40m■ Server running on port ${port} => http://localhost:${port}\x1b[0m\n`);
+        });
+    })
+    .catch((error) => {
+        console.error(`\x1b[31m[server] Error connecting to the database: ${error}\x1b[0m`);
+        console.log(error)
+        process.exit(1);
+    });
 
 export default app;
