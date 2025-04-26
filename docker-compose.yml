@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16.6
+    image: postgres:17.4
     restart: always
     container_name: postgres-db
     environment:
@@ -23,7 +23,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: adminpass
       PGADMIN_LISTEN_PORT: 80
       DATABASE_HOST: db
-      PGADMIN_CONNECTIONS: '[{"name": "PostgresDB", "host": "db", "port": 5432, "username": "admin", "password": "adminpass", "database": "icfes"}]'
     ports:
       - "80:80"
     depends_on:
@@ -38,13 +37,12 @@ services:
       dockerfile: Dockerfile
     container_name: node-api
     environment:
+      NODE_ENV: production
       DB_HOST: db
       DB_PORT: 5432
       DB_USER: admin
       DB_PASSWORD: adminpass
       DB_NAME: icfes
-    env_file:
-      - ./api/.env.production
     ports:
       - "3000:3000"
     depends_on:

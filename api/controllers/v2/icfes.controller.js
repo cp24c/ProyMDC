@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import { parse } from "csv-parse";
-import { headerMap } from "../../utils/headerMap.js";
+import { headerMap } from "../../others/headerMap.js";
 import { period, examSite, school, student, score } from "../../models/index.js";
 
 export const uploadIcfesFile = async (req, res) => {
@@ -107,6 +107,6 @@ export const uploadIcfesFile = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Error processing file" });
+        return res.status(500).json({ error: "Error processing file"});
     }
 };

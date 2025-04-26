@@ -9,7 +9,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'My Node.js API',
+      title: 'Node.js API',
       version: '1.0.0',
       description: 'Documentation for my API',
     },
@@ -20,15 +20,17 @@ const options = {
       },
     ],
   },
-  apis: [join(__dirname, './routes/v2/*.js')],
+  apis: [
+    join(__dirname, '../routes/v2/*.routes.js'), // Path to your API routes (adjust if needed)
+    join(__dirname, './swaggerComponents.js'),  // Path to your swagger components file
+  ],
 };
 
 const specs = swaggerJsdoc(options);
 
-// Export as ES module function
 export default (app) => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-  
+
   // Optional route to view the generated JSON
   app.get('/api-docs-json', (req, res) => {
     res.setHeader('Content-Type', 'application/json');

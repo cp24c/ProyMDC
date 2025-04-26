@@ -1,4 +1,4 @@
-import { db } from "../config/db.js";
+import { db } from "./db.js";
 
 export const connectDB = async () => {
     try {
@@ -7,7 +7,7 @@ export const connectDB = async () => {
 
         await db.sync({
             alter: true,
-            force: false
+            force: true
         });
     } catch (error) {
         throw error;

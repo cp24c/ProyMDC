@@ -226,3 +226,4 @@ userRoutes.put("/:user_id", updateUser);
  *                                  example: "User not found"
  */
 userRoutes.delete("/:user_id", deleteUser);
+

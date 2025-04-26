@@ -1,3 +1,6 @@
+// This file contains the swagger components for the API documentation
+
+//  User
 /**
  * @swagger
  * components:
@@ -36,7 +39,7 @@
  *         - phone_number
  *         - email
  *         - password
- * 
+ *
  *   parameters:
  *     user_id:
  *       in: path
@@ -45,7 +48,7 @@
  *         type: integer
  *       required: true
  *       description: Id
- * 
+ *
  *   responses:
  *     NotFound:
  *       description: The requested resource was not found
@@ -67,7 +70,7 @@
  *               error:
  *                 type: string
  *                 example: unauthorized
- * 
+ *
  */
 /**
  * @swagger
@@ -80,4 +83,6 @@
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/user'
- */ 
+ */
+
+// Icfes

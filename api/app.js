@@ -1,24 +1,24 @@
-import setupSwagger from './swagger.js';
+import setupSwagger from './others/swagger.js';
 import express from 'express';
 import cors from 'cors';
-import { connectDB } from './utils/connectDB.js';
+import { connectDB } from './config/connectDB.js';
 import icfesUploadRoutesV2 from './routes/v2/icfes.routes.js';
 import { userRoutes as userRoutesV2 } from './routes/v2/user.routes.js';
-import { keycloak, memoryStore } from './config/keycloak.js';
-import session from 'express-session';
+// import { keycloak, memoryStore } from './config/keycloak.js';
+// import session from 'express-session';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Keycloak
-app.use(session({
-    secret: "super-secret-key",
-    resave: false,
-    saveUninitialized: true,
-    store: memoryStore
-}));
-app.use(keycloak.middleware());
+// app.use(session({
+//     secret: "super-secret-key",
+//     resave: false,
+//     saveUninitialized: true,
+//     store: memoryStore
+// }));
+// app.use(keycloak.middleware());
 
 setupSwagger(app);
 
