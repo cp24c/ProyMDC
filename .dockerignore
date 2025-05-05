@@ -1,5 +1,6 @@
+.vscode/
 api/node_modules/
 api/uploads/
 api/dev.sqlite
-api/tmp/
+api/.env
 images-docs/

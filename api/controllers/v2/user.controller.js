@@ -16,7 +16,7 @@ export const getUser = async (req, res) => {
         const { user_id } = req.params;
         const get_user = await user.findByPk(user_id);
 
-        if (!get_user) return res.status(404).json({ message: "User not found", error: error });
+        if (!get_user) return res.status(404).json({ message: "User not found"});
         res.json(get_user);
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error });

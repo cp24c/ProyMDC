@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { getUsers, getUser, addUser, updateUser, deleteUser } from "../../controllers/v2/user.controller.js";
+import { keycloak } from "../../config/keycloak.js";
 
 export const userRoutes = Router();
 /**
@@ -19,7 +20,7 @@ export const userRoutes = Router();
  *                              $ref: '#/components/schemas/user'
  *           
  */
-userRoutes.get("/", getUsers);
+userRoutes.get("/", keycloak.protect('api-read'), getUsers);
 
 /**
  * @swagger
@@ -53,7 +54,7 @@ userRoutes.get("/", getUsers);
  *                                  type: string
  *                                  example: "User not found"
  */
-userRoutes.get("/:user_id", getUser);
+userRoutes.get("/:user_id", keycloak.protect('api-read'), getUser);
 
 /**
  * @swagger
@@ -131,7 +132,7 @@ userRoutes.get("/:user_id", getUser);
  *                   type: string
  *                   example: "Error creating user"
  */
-userRoutes.post("/", addUser);
+userRoutes.post("/", keycloak.protect('api-write'), addUser);
 
 /**
  * @swagger
@@ -187,7 +188,7 @@ userRoutes.post("/", addUser);
  *                                  type: string
  *                                  example: "Error updating user"
  */
-userRoutes.put("/:user_id", updateUser);
+userRoutes.put("/:user_id", keycloak.protect('api-update'), updateUser);
 
 /**
  * @swagger
@@ -225,5 +226,5 @@ userRoutes.put("/:user_id", updateUser);
  *                                  type: string
  *                                  example: "User not found"
  */
-userRoutes.delete("/:user_id", deleteUser);
+userRoutes.delete("/:user_id", keycloak.protect('api-delete'), deleteUser);
 

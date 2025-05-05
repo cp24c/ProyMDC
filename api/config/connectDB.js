@@ -7,7 +7,7 @@ export const connectDB = async () => {
 
         await db.sync({
             alter: true,
-            force: true
+            force: false
         });
     } catch (error) {
         throw error;

@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:17.4
+    image: postgres:latest
     restart: always
     container_name: postgres-db
     environment:
@@ -37,12 +37,22 @@ services:
       dockerfile: Dockerfile
     container_name: node-api
     environment:
-      NODE_ENV: production
+      # Database
       DB_HOST: db
       DB_PORT: 5432
       DB_USER: admin
       DB_PASSWORD: adminpass
       DB_NAME: icfes
+      # Runtime
+      NODE_ENV: production
+      # Keycloak
+      KEYCLOAK_SERVER_URL: http://localhost:8080
+      KEYCLOAK_CLIENT_ID: icfes-cli
+      KEYCLOAK_REALM: icfes-realm
+      KEYCLOAK_REALM_PUBLIC_KEY: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArwgcXjDc38W8f0VwUQyObW2iNmZfsnGjLKOYP/E5e8/s08iRplXxn+kcQbI28P1f7TDleIY0L2nEBNhhUCqD4CsBbRENuadL5RI4pcvrLv9Grr5GopC4JC4eqsae2Eb0NnCNjf/jVKl8oIj3IZl09bGrc0J5JPCJpO7c8eYTIBY5eurHv0RQnj3v3OKKZX2tBZJJB2C8W8HdDc5/wdCCvIkmbmi6aMKY08A4PRiApWkf+3jzAERD2HI6MHULD0VEtnp1cOEbLdRpow21V0CgBIBf9J4otWH7+k/WrndGW4PMTlOivJ+fUBMdeo4eN38BThPusml1V6Wk1AKfWGzCFwIDAQAB
+      KEYCLOAK_SECRET: xpq2ie28qDpgkSeoWlgWjHZEv6vvnCxb
+      # Session
+      SESSION_SECRET: secret-session-k24681357
     ports:
       - "3000:3000"
     depends_on:
@@ -52,7 +62,7 @@ services:
     restart: always
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.2.0
+    image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
     command: start-dev
     environment:
@@ -60,6 +70,7 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./keycloak_realm:/opt/keycloak/data/import
     ports:
       - "8080:8080"
     networks:

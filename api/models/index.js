@@ -8,7 +8,7 @@ import { user } from "./user.model.js";
 score.belongsTo(student, { foreignKey: "student_consecutive" });
 student.hasOne(score, { foreignKey: "student_consecutive" });
 
-school.hasMany(student, { foreignKey: "school_icfes_code" });
+school.hasMany(student, { foreignKey: "school_icfes_code", onDelete: 'CASCADE' });
 student.belongsTo(school, { foreignKey: "school_icfes_code" });
 
 examSite.hasMany(student, { foreignKey: "exam_site_code" });
