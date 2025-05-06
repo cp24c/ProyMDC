@@ -4,8 +4,6 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { EventEmitter } from '@angular/core';
 
-import { RouterLink } from '@angular/router';
-
 @Component({
   selector: 'app-bar-menu',
   imports: [ToolbarModule, AvatarModule, ButtonModule],

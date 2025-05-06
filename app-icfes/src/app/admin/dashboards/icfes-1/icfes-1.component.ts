@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { MetabaseTokenService } from '../../services/metabase-token.service';
 
 @Component({
   selector: 'app-icfes-1',
@@ -6,6 +8,25 @@ import { Component } from '@angular/core';
   templateUrl: './icfes-1.component.html',
   styles: ``
 })
-export class Icfes1Component {
+export class Icfes1Component implements OnInit{
+
+  metabaseUrl!: SafeResourceUrl;
+
+  constructor(
+    private metabaseTokenService: MetabaseTokenService,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit(): void {
+    this.metabaseTokenService.getMetabaseUrl(1).subscribe({
+      next: (res) => {
+        this.metabaseUrl = this.sanitizer.bypassSecurityTrustResourceUrl(res.iframeUrl);
+        console.log(this.metabaseUrl)
+      },
+      error: (err) => {
+        console.error('Error fetching Metabase URL:', err);
+      }
+    });
+  }
 
 }

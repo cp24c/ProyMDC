@@ -1,0 +1,2 @@
+export const METABASE_SITE_URL = "http://localhost:3300";
+export const METABASE_SECRET_KEY= "116637ec4c3e12da8273032b724c83265dc7c771c55eca854313cc9bc93182f5";
