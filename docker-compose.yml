@@ -10,6 +10,7 @@ services:
       POSTGRES_PASSWORD: adminpass
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     networks:
@@ -29,6 +30,7 @@ services:
       - db
     networks:
       - app-network
+
     restart: always
 
   api:
@@ -57,6 +59,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    command: sh -c "sleep 15 && exec npm start"
     networks:
       - app-network
     restart: always
@@ -76,6 +79,23 @@ services:
     networks:
       - app-network
     restart: always 
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    ports:
+      - "3300:3000"  # 👈 aquí se cambia el puerto externo
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: admin
+      MB_DB_PASS: adminpass
+      MB_DB_HOST: db
+    depends_on:
+      - db 
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
