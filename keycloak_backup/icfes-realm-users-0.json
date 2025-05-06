@@ -50,7 +50,14 @@
     "createdTimestamp" : 1746469095847,
     "enabled" : true,
     "totp" : false,
-    "credentials" : [ ],
+    "credentials" : [ {
+      "id" : "3f3c6a3d-85db-4f73-b18d-f02451bb90cc",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1746537519985,
+      "secretData" : "{\"value\":\"R+ve57AKFu/pDjd494siNdix2Utki9Kkz1JnUhqg6P0=\",\"salt\":\"bde3pz8cV0lkWOJjdrhrDQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
     "realmRoles" : [ "default-roles-realm-icfes" ],
