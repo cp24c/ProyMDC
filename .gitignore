@@ -1,4 +1,4 @@
-./vscode
+.vscode/
 api/node_modules/
 api/uploads/
 api/dev.sqlite
