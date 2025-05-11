@@ -92,6 +92,8 @@ services:
       MB_DB_USER: admin
       MB_DB_PASS: adminpass
       MB_DB_HOST: db
+      MB_SITE_URL: http://localhost:3300
+      MB_EMBEDDING_SECURE_HEADERS: false
     depends_on:
       - db 
     networks:

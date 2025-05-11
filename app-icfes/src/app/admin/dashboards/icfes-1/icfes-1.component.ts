@@ -18,7 +18,7 @@ export class Icfes1Component implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.metabaseTokenService.getMetabaseUrl(1).subscribe({
+    this.metabaseTokenService.getMetabaseUrl(2).subscribe({
       next: (res) => {
         this.metabaseUrl = this.sanitizer.bypassSecurityTrustResourceUrl(res.iframeUrl);
         console.log(this.metabaseUrl)

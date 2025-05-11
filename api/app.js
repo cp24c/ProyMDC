@@ -6,15 +6,12 @@ import icfesUploadRoutesV2 from './routes/v2/icfes.routes.js';
 import { userRoutes as userRoutesV2 } from './routes/v2/user.routes.js';
 import metabaseRoutesV2  from './routes/v2/metabase.routes.js'
 import { keycloak, sessionKC } from './config/keycloak.js';
-//imposrts from metabse
+
 
 const app = express();
 setupSwagger(app);
 app.use(express.json());
-
-app.use(cors({
-    origin: 'http://localhost:4200'
-}));
+app.use(cors());
 
 app.use(sessionKC);
 app.use(keycloak.middleware());

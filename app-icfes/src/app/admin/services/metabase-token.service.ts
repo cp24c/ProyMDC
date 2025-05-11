@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MetabaseTokenService {
 
-  private apiUrl = 'http://localhost:3300/metabase-token';
+  private apiUrl = 'http://localhost:3000/api/v2/metabase-token';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,6 @@ export class MetabaseTokenService {
       resource: { dashboard: dashboardId },
       params
     };
-
     return this.http.post<{ iframeUrl: string }>(this.apiUrl, payload);
   }
 }
