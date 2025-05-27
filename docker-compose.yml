@@ -55,6 +55,7 @@ services:
       KEYCLOAK_SECRET: xpq2ie28qDpgkSeoWlgWjHZEv6vvnCxb
       # Session
       SESSION_SECRET: secret-session-k24681357
+      KC_HOSTNAME: localhost
     ports:
       - "3000:3000"
     depends_on:
@@ -72,7 +73,7 @@ services:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
     volumes:
-      - keycloak_data:/opt/keycloak/data
+      - ./keycloak_data:/opt/keycloak/data
       - ./keycloak_backup:/opt/keycloak/data/import
     ports:
       - "8080:8080"
@@ -102,6 +103,7 @@ services:
 volumes:
   postgres_data:
   keycloak_data: 
+
 networks:
   app-network:
     driver: bridge

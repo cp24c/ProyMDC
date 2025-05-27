@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { BadgeModule } from 'primeng/badge';
 import { RippleModule } from 'primeng/ripple';
 
-import { RouterLink } from '@angular/router';
+
+import { RouterModule } from '@angular/router';
+
+import { HasRolesDirective } from 'keycloak-angular';
+
+import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-panel-menu',
-  imports: [PanelMenuModule, BadgeModule, RippleModule, RouterLink],
+  imports: [PanelMenuModule, BadgeModule, RippleModule, RouterModule, HasRolesDirective],
   templateUrl: './panel-menu.component.html',
   styles: ``
 })
 export class PanelMenuComponent {
+  
+  private readonly keycloak = inject(Keycloak);
+
   visible:boolean = true
-  items:MenuItem[] = [
+    items:MenuItem[] = [
     {
       label:'USERS',
       icon: 'pi pi-user',
+
       items: [
         {label: 'User accounts', icon: 'pi pi-users'}
       ]
@@ -26,7 +35,7 @@ export class PanelMenuComponent {
       label: 'DATA ICFES',
       icon: 'pi pi-file',
       items: [
-          {label: 'Import data', icon: 'pi pi-file-import', route: 'admin/import-data'},
+          {label: 'Import data', icon: 'pi pi-file-import', route: 'upload-icfes'},
           {label: 'View data', icon: 'pi pi-receipt'},
       ]
     },
@@ -59,5 +68,9 @@ export class PanelMenuComponent {
   toggleAll() {
     const expanded = !this.areAllItemsExpanded();
     this.items = this.toggleAllRecursive(this.items, expanded);
+  }
+
+  logout(){
+    this.keycloak.logout();
   }
 }

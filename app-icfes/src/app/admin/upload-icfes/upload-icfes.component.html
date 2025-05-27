@@ -1,0 +1,23 @@
+<div class="card">
+    <p-toast/>
+
+    <p-fileupload 
+        name="file"
+        url="http://localhost:3000/api/v2/icfes/upload"
+        accept=".txt" 
+        maxFileSize="1000000" 
+        [multiple]="false" 
+        (onUpload)="onUpload($event)"
+        (onError)="onError($event)"
+        mode="advanced">
+        <ng-template #empty>
+            <h5>Drag and drop files to here to upload.</h5>
+        </ng-template>
+        <ng-template #content>
+            @if(uploadedFiles.length){
+                <li *ngFor ="let file of uploadedFiles"> {{file.name}} - {{file.size}} bytes</li>
+            }
+        </ng-template>
+    </p-fileupload>
+    
+</div>

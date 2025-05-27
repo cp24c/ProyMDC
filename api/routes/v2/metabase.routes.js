@@ -1,11 +1,12 @@
 import { Router } from "express";
 import jwt from 'jsonwebtoken'
+import { keycloak } from "../../config/keycloak.js";
 import { METABASE_SECRET_KEY, METABASE_SITE_URL } from '../../config/metabase.js';
 
 
 const metabaseRouter = Router();
 
-metabaseRouter.post('/', (req, res) => {
+metabaseRouter.post('/',keycloak.protect('api-read') ,(req, res) => {
 
     const { resource, params } = req.body;
     if (!resource || !params) {
