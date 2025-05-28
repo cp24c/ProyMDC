@@ -3,3 +3,4 @@ api/node_modules/
 api/uploads/
 api/dev.sqlite
 api/.env
+postgres_data/
