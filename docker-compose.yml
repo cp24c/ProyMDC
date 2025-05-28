@@ -9,8 +9,8 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: adminpass
     volumes:
-      - postgres_data:/var/lib/postgresql/data
       - ./postgres-init:/docker-entrypoint-initdb.d
+      - ./postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -74,7 +74,6 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
     volumes:
       - ./keycloak_data:/opt/keycloak/data
-      - ./keycloak_backup:/opt/keycloak/data/import
     ports:
       - "8080:8080"
     networks:
@@ -100,9 +99,6 @@ services:
     networks:
       - app-network
 
-volumes:
-  postgres_data:
-  keycloak_data: 
 
 networks:
   app-network:

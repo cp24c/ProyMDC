@@ -36,7 +36,7 @@ export class PanelMenuComponent {
       icon: 'pi pi-file',
       items: [
           {label: 'Import data', icon: 'pi pi-file-import', route: 'upload-icfes'},
-          {label: 'View data', icon: 'pi pi-receipt'},
+          {label: 'View data', icon: 'pi pi-receipt', route: 'list-students-score'},
       ]
     },
     {

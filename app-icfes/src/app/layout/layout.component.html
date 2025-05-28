@@ -22,9 +22,8 @@
         <app-bar-menu (togglePanelMenu)="togglePanelMenu()" class="lg:hidden"/>
         <div 
           class="flex-1 p-0 bg-gray-100 overflow-hidden"
-          [ngClass] = "{'max-w-[80vw]': isScreenLarge, 'max-w-[98vw]': !isScreenLarge}"
+          [ngClass] = "{'max-w-[100vw]': isScreenLarge, 'max-w-[98vw]': !isScreenLarge}"
           >
-          
           <!-- Aquí va el contenido principal -->
           <div class="card border border-gray-300 ml-1 shadow-lg rounded-lg h-full">
             <router-outlet/>

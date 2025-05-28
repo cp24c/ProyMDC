@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { canActivateAuthRole } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path:'', redirectTo:'data-icfes', pathMatch: 'full'},
+    {path:'', redirectTo:'data-icfes/list-students-score', pathMatch: 'full'},
     {
         path:'data-icfes',
         component: LayoutComponent,
@@ -16,11 +16,17 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboards/icfes-1/icfes-1.component').then(m => m.Icfes1Component)
             },
             {
+                path: 'upload-icfes',
                 canActivate: [canActivateAuthRole],
                 data: {role: 'api-admin'},
-                path: 'upload-icfes',
                 loadComponent: () => import('./admin/upload-icfes/upload-icfes.component').then(m => m.UploadIcfesComponent)
-            }
+            },
+            {
+                path: 'list-students-score',
+                canActivate: [canActivateAuthRole],
+                data: {role: 'api-read'},
+                loadComponent: () => import('./dashboards/list-students-score/list-students-score.component').then(m => m.ListStudentsScoreComponent)
+            },
         ]
     },
     { 

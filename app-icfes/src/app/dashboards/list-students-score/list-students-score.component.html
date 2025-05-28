@@ -1,0 +1,15 @@
+@if (metabaseUrl) {
+    <iframe
+        [src]=metabaseUrl
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allowfullscreen="true"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-downloads allow-presentation allow-top-navigation-by-user-activation"
+        allowtransparency="true">
+    </iframe>
+}@else{
+    <ng-template #loading>
+        <p>Cargando dashboard de Metabase...</p>
+    </ng-template>
+}
