@@ -22,6 +22,7 @@ export class PanelMenuComponent {
   private readonly keycloak = inject(Keycloak);
 
   visible:boolean = true
+  
     items:MenuItem[] = [
     {
       label:'USERS',

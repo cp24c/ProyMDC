@@ -15,6 +15,7 @@ export class LayoutComponent {
   isPanelMenuVisible:boolean = false;
   isScreenLarge: boolean = false;
   footerOpacity: number = 0;
+  isFotterVisible: boolean = false;
 
   ngOnInit(): void {
     this.updateScreenSize();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { MetabaseTokenService } from '../../services/metabase-token.service';
 
@@ -11,6 +11,7 @@ import { MetabaseTokenService } from '../../services/metabase-token.service';
 export class Icfes1Component implements OnInit{
 
   metabaseUrl!: SafeResourceUrl;
+  isFotterVisible: boolean = false;
 
   constructor(
     private metabaseTokenService: MetabaseTokenService,

@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { canActivateAuthRole } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path:'', redirectTo:'data-icfes/list-students-score', pathMatch: 'full'},
+    {path:'', redirectTo:'data-icfes/dashboard/icfes-1', pathMatch: 'full'},
     {
         path:'data-icfes',
         component: LayoutComponent,

@@ -98,6 +98,21 @@ services:
       - db 
     networks:
       - app-network
+  
+  app-icfes:
+    build:
+      context: ./app-icfes
+      dockerfile: Dockerfile
+    container_name: app-icfes
+    ports:
+      - "4200:4200"
+    networks:
+      - app-network
+    depends_on:
+      - api
+      - metabase
+      - keycloak      
+    restart: always
 
 
 networks:
