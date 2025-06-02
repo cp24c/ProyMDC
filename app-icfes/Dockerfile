@@ -1,13 +1,12 @@
-FROM node:23-alpine3.20
-
-WORKDIR /app
-WORKDIR /usr/src/app
-
-COPY . /usr/src/app
-
+FROM node:latest AS build
+WORKDIR /src
 RUN npm install -g @angular/cli
 
-RUN npm install
+COPY package*.json ./
+RUN npm ci
 
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+COPY . ./
+RUN ng build --configuration=production
 
+FROM nginx:latest AS final
+COPY --from=build /src/dist/app-icfes/browser /usr/share/nginx/html

@@ -4,3 +4,12 @@ api/uploads/
 api/dev.sqlite
 api/.env
 images-docs/
+app-icfes/.angular
+app-icfes/node_modules/
+app-icfes/dist/
+app-icfes/.env
+app-icfes/.vscode/
+app-icfes/.idea/
+app-icfes/.angular.json
+app-icfes/.angular/
+app-icfes/README.md
