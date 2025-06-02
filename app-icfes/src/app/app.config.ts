@@ -5,11 +5,11 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 
 //import keycloak-angular
-import { 
+import {
   provideKeycloak,
   createInterceptorCondition,
   IncludeBearerTokenCondition,
-  INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG, 
+  INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
   includeBearerTokenInterceptor
 } from 'keycloak-angular';
 
@@ -26,11 +26,14 @@ const urlCondition = createInterceptorCondition<IncludeBearerTokenCondition>({
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: Aura,
+        options: {
+          darkModeSelector: 'false'
+        }
       }
     }),
     provideKeycloak({
