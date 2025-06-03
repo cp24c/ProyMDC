@@ -30,7 +30,6 @@ services:
       - db
     networks:
       - app-network
-
     restart: always
 
   api:

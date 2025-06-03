@@ -4,3 +4,4 @@ api/uploads/
 api/dev.sqlite
 api/.env
 postgres_data/
+app-icfes/.angular
