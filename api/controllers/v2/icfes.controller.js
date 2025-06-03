@@ -89,16 +89,30 @@ export const uploadIcfesFile = async (req, res) => {
             }
 
             // score
-            if (mapped.student_consecutive) {
-                await score.upsert({
-                    student_consecutive: mapped.student_consecutive,
+            const existConsecutive = await score.findOne({
+                where: { student_consecutive: mapped.student_consecutive }
+            });
+            if (existConsecutive) {
+                await existConsecutive.update({
                     score_critical_reading: mapped.score_critical_reading || null,
                     score_math: mapped.score_math || null,
                     score_social_citizenship: mapped.score_social_citizenship || null,
                     score_natural_sciences: mapped.score_natural_sciences || null,
                     score_english: mapped.score_english || null,
-                    score_global: mapped.score_global || null,
+                    score_global: mapped.score_global || null
                 });
+            } else {
+                if (mapped.student_consecutive) {
+                    await score.upsert({
+                        student_consecutive: mapped.student_consecutive,
+                        score_critical_reading: mapped.score_critical_reading || null,
+                        score_math: mapped.score_math || null,
+                        score_social_citizenship: mapped.score_social_citizenship || null,
+                        score_natural_sciences: mapped.score_natural_sciences || null,
+                        score_english: mapped.score_english || null,
+                        score_global: mapped.score_global || null,
+                    });
+                }
             }
 
         }
@@ -107,6 +121,6 @@ export const uploadIcfesFile = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Error processing file"});
+        return res.status(500).json({ error: "Error processing file" });
     }
 };
