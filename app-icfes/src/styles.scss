@@ -1,2 +1,13 @@
-@use 'tailwindcss';
+@use "tailwindcss";
 @use "primeicons/primeicons.css";
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('assets/fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Lato-Regular', sans-serif;
+}

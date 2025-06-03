@@ -3,7 +3,7 @@
       <!-- Panel Menu -->
       @if (isScreenLarge || isPanelMenuVisible) {
         <div 
-          class="fixed inset-y-0 left-0 w-64 text-white z-50 lg:relative lg:z-auto ml-1 my-1" 
+          class="fixed inset-y-0 left-0 w-64  text-white z-50 lg:relative lg:z-auto ml-1 my-1" 
           [ngClass]="{'hidden': !isScreenLarge && !isPanelMenuVisible}">
           <app-panel-menu></app-panel-menu>
         </div>

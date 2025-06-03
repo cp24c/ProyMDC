@@ -1,29 +1,35 @@
-<div class="w-64 flex flex-col items-center card h-full bg-white border border-gray-300 m-0  shadow-lg rounded-lg z-30">
-    <div class="bg-[#009640] text-white w-full h-18 md:h-28 p-4 mb-2 border border-gray-300 m-1 shadow-lg rounded-lg flex items-center justify-center">
-        <img src="/images/logo-udenar-blanco.png" alt="Logo" class="h-full mr-2"/>
-        <div class="border-l-1 border-white h-full mr-2"></div>
-        <h1 style="font-weight:bold;color:#ffffff;">DATA ANALYSIS</h1>
-        
+<div class="w-64 flex flex-col items-center card h-full bg-white border border-gray-300 shadow-lg rounded-lg z-30">
+
+    <div
+        class="bg-transparent text-white w-full h-18 md:h-28 p-4 mb-7 rounded-t-lg border-b border-gray-300 flex items-center justify-center">
+        <img src="/images/datalyse-logo1.png" alt="Logo" class="w-full" />
+        <!-- <div class="border-l-1 border-white h-full mr-2"></div>
+        <h1 class="font-bold">DATA ANALYSIS</h1> -->
     </div>
 
     <p-panelmenu [model]="items" styleClass="w-60 md:w-60">
         <ng-template #item let-item>
             @if(item.label === 'USERS' || item.label === 'Import data'){
-                <a pRipple [routerLink]="item.route" class="flex items-center px-4 py-2 cursor-pointer group" *kaHasRoles="['api-admin']">
-                    <i [class]="item.icon + ' text-primary group-hover:text-inherit'"></i>
-                    <span class="ml-4">{{ item.label }}</span>
-                </a>
+            <a pRipple [routerLink]="item.route" class="flex items-center px-4 py-2 cursor-pointer group"
+                *kaHasRoles="['api-admin']">
+                <i [class]="item.icon + ' text-primary group-hover:text-inherit'"></i>
+                <span class="ml-4">{{ item.label }}</span>
+            </a>
             }@else {
-                <a pRipple [routerLink]="item.route" class="flex items-center px-4 py-2 cursor-pointer group">
-                    <i [class]="item.icon + ' text-primary group-hover:text-inherit'"></i>
-                    <span class="ml-4">{{ item.label }}</span>
-                </a>
+            <a pRipple [routerLink]="item.route" class="flex items-center px-4 py-2 cursor-pointer group">
+                <i [class]="item.icon + ' text-primary group-hover:text-inherit'"></i>
+                <span class="ml-4">{{ item.label }}</span>
+            </a>
             }
-            
+
         </ng-template>
-    </p-panelmenu>   
+    </p-panelmenu>
     <!-- Footer -->
-    <div class="bg-[#ffffff] border-t border-gray-300 w-full p-4 flex justify-center items-center mt-6">
-        <button class="bg-[#009640] text-white px-4 py-2 rounded hover:bg-[#007a32]" (click)="logout()">Log Out</button>
+    <div class="border-t border-gray-300 w-full h-full flex justify-center items-end mt-7 mb-15">
+        <div (click)="logout()"
+            class="flex flex-row items-center text-gray-900 text-base font-normal px-4 py-2 border border-gray-400 rounded hover:bg-slate-100 hover:text-black cursor-pointer">
+            <i [class]="'pi pi-sign-out text-primary group-hover:text-inherit mr-2'"></i>
+            <p type="button">LOGOUT</p>
+        </div>
     </div>
 </div>
