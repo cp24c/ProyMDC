@@ -57,11 +57,11 @@ tambien el punto (.)
 
 Para ejecutar el proyecto recuerde tener instalado doker en su disposivo.
 
-Ubiquese en la carpeta raiz y ejecute
+Ubiquese con una terminal en la carpeta raiz y ejecute
 
 <span style="border: 1px solid black; padding: 4px; border-radius: 3px;" translate="no">docker-compose up --build</span>
 
-esto empesara a clonar las imagenes que necesite y despues a levantar los contenedores, esto puede tardar un tiempo.
+Esto empezara a clonar las imagenes que necesite y despues a levantar los contenedores, esto puede tardar un tiempo.
 
 Si al levantar los servios revisa los primeros logs encontra errores de app-icfes, metabase y api, esto es porque los servicios dependen de la base de datos en el servicio db, espere que se creen las  bases de datos, y los servicios pudan conectarse, esto se hace automatico. Las aplicaciones en los contenedores reintentan conectar cada cierto tiempo, en el momento en que se estable la conexión los errores dejaran de aparecer, esto puede tardar un tiempo espere.
 
