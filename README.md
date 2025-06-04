@@ -3,6 +3,11 @@
 ## Objetivo:
 - Ejemplificar el embebido (Embebido estatico metabase) de una herramineta de Inteligencias de negocios en otro sistema cualquiera  
 
+# Desarrollado por:
+enlaces github:
+- [Daniel Vallejos](https://github.com/danielV277)  
+- [Cristian Paz](https://github.com/cp24c)
+
 ## Descripcion:
 En este proyecto se incorporan dockerizados los siguientes servicios:
 
